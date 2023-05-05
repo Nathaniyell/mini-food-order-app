@@ -1,12 +1,7 @@
 import React from 'react'
 import styles from './availablemeals.module.css'
-
-export const AvailableMeals = () => {
-  return (
-    <div>AvailableMeals</div>
-  )
-}
-
+import Card from '../UI/Card';
+import MealItem from './MealItem/MealItem';
 const DUMMY_MEALS = [
     {
       id: 'm1',
@@ -33,3 +28,25 @@ const DUMMY_MEALS = [
       price: 18.99,
     },
   ];
+  
+const AvailableMeals = () => {
+    const mealsList = DUMMY_MEALS.map(meal=>{
+        return(
+            <MealItem key={meal.id}
+            id={meal.id}
+           meal={meal}
+            />
+        )
+    })
+    return (
+     <section className={styles.meals}>
+      <Card >
+        <ul>
+            {mealsList}
+        </ul>
+        </Card>
+     </section>
+    )
+  }
+
+  export  default AvailableMeals
