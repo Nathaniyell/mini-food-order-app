@@ -4,7 +4,7 @@ import { FiShoppingCart } from "@react-icons/all-files/fi/FiShoppingCart"
 
 export const CartBtn = (props) => {
   return (
-    <button className={style.button}>
+    <button className={style.button} onClick={props.onClick} >
       <span className={style.icon}>
       <FiShoppingCart />
       </span>

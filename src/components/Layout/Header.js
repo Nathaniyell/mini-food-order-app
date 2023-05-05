@@ -8,7 +8,7 @@ const Header = (props) => {
     <>
     <header className={style.header}>
         <h1>React Meals</h1>
-       <CartBtn />
+       <CartBtn onClick={props.onShowCart} />
     </header>
     <div className={style["main-image"]}>
         <img src={mealsImage} alt="MealsImage" />
