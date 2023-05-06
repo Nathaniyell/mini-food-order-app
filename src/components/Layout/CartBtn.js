@@ -10,6 +10,10 @@ const numberOfCartItems = cartCtx.items.reduce((currentNumber, item)=>{
   return currentNumber + item.amount
 }, 0)
 
+const btnClasses = `${style.button}  ${style.bumb}`
+
+
+
   return (
     <button className={style.button} onClick={props.onClick} >
       <span className={style.icon}>

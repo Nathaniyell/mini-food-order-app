@@ -12,9 +12,11 @@ const totalAmount = `$${cartCtx.totalAmount.toFixed(2)
 }`
 
 const removeCartItemHandler = id =>{
-
+cartCtx.removeItem(id)
 }
-const addCartItemHandler = item =>{}
+const addCartItemHandler = item =>{
+  cartCtx.addItem({...item, amount: 1})
+}
 
 
 const hasItems = cartCtx.items.length > 0
