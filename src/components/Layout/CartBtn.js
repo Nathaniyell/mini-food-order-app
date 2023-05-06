@@ -1,21 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./cartbtn.module.css";
 import { FiShoppingCart } from "@react-icons/all-files/fi/FiShoppingCart"
 import CartContext from "../../store/cart-context";
 
 export const CartBtn = (props) => {
-const cartCtx = useContext(CartContext)
+  const [btnHighlighted, setBtnHighlighted] = useState(false)
+  const cartCtx = useContext(CartContext)
+  const {items} = cartCtx
 
-const numberOfCartItems = cartCtx.items.reduce((currentNumber, item)=>{
+const numberOfCartItems = items.reduce((currentNumber, item)=>{
   return currentNumber + item.amount
 }, 0)
 
-const btnClasses = `${style.button}  ${style.bumb}`
+const btnClasses = `${style.button} ${btnHighlighted ? style.bumb : ""}`
 
 
+useEffect(()=>{
+  if(items.length === 0){
+    return
+  }
+setBtnHighlighted(true)
+const timer = setTimeout(()=>{
+  setBtnHighlighted(false)
+}, 300)
+return ()=>{
+  clearTimeout(timer)
+}
+
+}, [items])
 
   return (
-    <button className={style.button} onClick={props.onClick} >
+    <button className={btnClasses} onClick={props.onClick} >
       <span className={style.icon}>
       <FiShoppingCart />
       </span>
